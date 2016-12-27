@@ -1,0 +1,12 @@
+
+{% extends "::default/layout.html.twig" %}
+
+{% block container %} {{ parent() }} Contenido de la subplantilla {% endblock %}
+
+{% block nombrepagina %} {{ nombre }} - {{ page }} {% endblock %}
+
+{% block array %} {{fruta.manzana}}
+{{productos[0].producto}}
+
+
+{% endblock %}

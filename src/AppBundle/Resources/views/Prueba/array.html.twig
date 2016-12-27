@@ -1,0 +1,32 @@
+
+{% extends "::default/layout.html.twig" %}
+
+{% block container %} {{fruta.manzana}} - {{fruta.platano}}
+
+{{productos[1].producto}}
+
+
+ {% endblock %}
+
+
+
+
+{% block body %}
+{{ parent() }}
+<p>
+{% set variable="variable creada en twig" %}
+{{variable}}
+</p>
+
+{% if productos|length > 0 %}
+
+<ul>
+{% for i in productos %}
+
+	<li>{{i.producto}} - {{i.precio}}</li>
+
+{% endfor %}
+</ul>
+
+{% endif %}
+{% endblock %}

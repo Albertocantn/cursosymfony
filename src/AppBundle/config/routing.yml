@@ -1,0 +1,21 @@
+rutasappbundle:
+    path: /hola/mundo
+    defaults: { _controller: AppBundle:Prueba:ver }
+
+rutaparametro:
+    path: /prueba/{lang}/{name}/{page}
+    defaults: { _controller: AppBundle:Prueba:name,lang:es,name:nombre_por_defecto,page:1 }
+    methods: [GET]
+    requirements:
+        page: \d+
+        name: "[a-zA-Z]*"
+        lang: es|en|fr
+
+variablesgetypost:
+    path: /getypost
+    defaults: { _controller: AppBundle:Prueba:variablesgetypost}
+    methods: [POST, GET]
+
+twigarrays:
+    path: /twigarrays
+    defaults: {_controller: AppBundle:Prueba:enviarproductos}
