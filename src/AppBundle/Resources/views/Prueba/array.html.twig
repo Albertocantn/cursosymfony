@@ -42,8 +42,20 @@
 
 {{include('AppBundle:Prueba:partial.html.twig')}}
 {{ max([76,99,67]) }} {# SACA EL NUMERO MAXIMO DE UN ARRAY QUE LE PASES #}
+<hr/>
 {{ min([76,99,67]) }} {# SACA EL NUMERO MINIMO DE UN ARRAY QUE LE PASES #}
+<hr/>
 {{ random(1000) }} {# numero aleatorio del 0 al 1000 #}
+<hr/>
+{{ random(["batman","spiderman","superman"])}} {# saca un nombre aleatorio de ese array#}
+
+</hr>
+
+{% for i in range(0,20,5)%} {#con dos parametros me muestra del 0 al 20 si le añado un tercer parametro los multiplos#}
+
+<br>{{i}}
+
+{% endfor %}
 
 
 {% endblock %}
