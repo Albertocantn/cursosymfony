@@ -29,4 +29,19 @@
 </ul>
 
 {% endif %}
+
+<hr/>
+
+
+
+{{ "now"|date("m/d/Y") }} {# DA LA FECHA ACTUAL#}
+
+ 
+
+<hr/>
+
+{{include('AppBundle:Prueba:partial.html.twig')}}
+{{ max([76,99,67]) }} {# SACA EL NUMERO MAXIMO DE UN ARRAY QUE LE PASES#}
+
+
 {% endblock %}
