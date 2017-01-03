@@ -8,10 +8,11 @@
 
  {% endblock %}
 
- <h3>hola que tal</h3>
+
 {# COMENTARIO DE CODIGO EN TWIG PROBANDO REPOSITORIO REMOTO#}
 
 {% block body %}
+	 <h3>hola que tal</h3>
 {{ parent() }}
 <p>
 {% set variable="variable creada en twig" %}
@@ -48,8 +49,10 @@
 {{ random(1000) }} {# numero aleatorio del 0 al 1000 #}
 <hr/>
 {{ random(["batman","spiderman","superman"])}} {# saca un nombre aleatorio de ese array#}
-
 </hr>
+{{generateTable(productos)|raw}}
+</hr>
+
 
 {% for i in range(0,20,5)%} {#con dos parametros me muestra del 0 al 20 si le añado un tercer parametro los multiplos#}
 

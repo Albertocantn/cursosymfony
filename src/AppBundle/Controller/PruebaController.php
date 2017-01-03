@@ -37,7 +37,8 @@ class PruebaController extends Controller
     {
         $productos= array( array("producto"=>"Consola","precio"=>50),
         array("producto"=>"Consola2","precio"=>60),
-        array("producto"=>"Consola3","precio"=>70)
+        array("producto"=>"Consola3","precio"=>70),
+        array("producto"=>"Consola4","precio"=>770)
        );
 
         $fruta=array("manzana"=>"dulce","platano"=>"suave");
