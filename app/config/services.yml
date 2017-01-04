@@ -13,3 +13,9 @@ services:
         public: true
         tags:
             - { name: twig.extension}
+
+    filter.twig_extension:
+        class: AppBundle\Twig\FilterVistas
+        public: true
+        tags:
+            - { name: twig.extension}

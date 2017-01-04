@@ -45,6 +45,12 @@
 
 <hr/>
 
+ {% set texto = "     hola " %}
+ 	{{texto|trim}}
+
+ 	{{texto|addText(2)}}
+
+
 {{include('AppBundle:Prueba:partial.html.twig')}}
 {{ max([76,99,67]) }} {# SACA EL NUMERO MAXIMO DE UN ARRAY QUE LE PASES #}
 <hr/>
