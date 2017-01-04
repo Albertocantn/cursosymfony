@@ -36,8 +36,12 @@
 
 
 {{ "now"|date("m/d/Y") }} {# DA LA FECHA ACTUAL #}
+<br>
 
- 
+ {% set fecha = date("","Europe/Madrid") %}
+
+ 	{{fecha.date|date("d-m-Y")}}
+
 
 <hr/>
 
@@ -58,7 +62,11 @@
 
 <br>{{i}}
 
+
 {% endfor %}
+
+<br>
+{{productos|length}}
 
 
 {% endblock %}
