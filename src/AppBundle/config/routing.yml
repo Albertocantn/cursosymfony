@@ -19,3 +19,11 @@ variablesgetypost:
 twigarrays:
     path: /twigarrays
     defaults: {_controller: AppBundle:Prueba:enviarproductos}
+
+create:
+    path: /addcurso
+    defaults: {_controller: AppBundle:Prueba:create}
+
+read:
+    path: /getcurso
+    defaults: {_controller: AppBundle:Prueba:read }
