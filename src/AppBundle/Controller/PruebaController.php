@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Curso;
+use AppBundle\Form\CursoType;
 
 class PruebaController extends Controller
 {
@@ -224,5 +225,65 @@ class PruebaController extends Controller
 
 
     }
+
+
+public function repositorioAction(){
+
+$em=$this->getDoctrine()->getManager();
+
+$cursos_repositorio=$em->getRepository("AppBundle:Curso");
+
+$cursos=$cursos_repositorio->getCursos();
+
+        foreach ($cursos as $curso) {
+
+        echo $curso->getTitulo()."<br/>";
+        echo $curso->getDescripcion()."<br/>";
+        echo $curso->getPrecio()."<br/>";
+       
+       
+       }
+
+     die();
+
+}
+
+public function formulariocursoAction(Request $request){
+
+    $curso = new Curso();
+
+    $form=$this->createForm(CursoType::class,$curso);
+
+    $form->handleRequest($request);
+
+    if($form->isValid()){
+
+        $status=" Formulario válido";
+        $data=array(
+            "titulo"=> $form->get("titulo")->getData(),
+            "descripcion"=> $form->get("descripcion")->getData(),
+            "precio"=>$form->get("precio")->getData()
+
+            );
+    }
+
+    else{
+       $status=null;
+       $data=null;
+
+    }
+
+    return $this->render('AppBundle:Prueba:form.html.twig', array('form' => $form->createView(),"status"=>$status,"data"=>$data));
+
+
+}
+
+
+
+
+
+
+
+
 }
 

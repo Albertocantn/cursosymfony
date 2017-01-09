@@ -47,3 +47,11 @@ dql:
 querybuilder:
     path: /querybuilder
     defaults: {_controller: AppBundle:Prueba:querybuilder }
+
+queryrepositorio:
+    path: /queryrepositorio
+    defaults: {_controller: AppBundle:Prueba:repositorio }
+
+formulariocurso:
+    path: /formulariocurso
+    defaults: {_controller: AppBundle:Prueba:formulariocurso }
