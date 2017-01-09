@@ -55,7 +55,7 @@ class PruebaController extends Controller
         $curso = new Curso() ;
         $curso->setTitulo("curso symfony");
         $curso->setDescripcion("descripcion del curso");
-        $curso->setPrecio("83");
+        $curso->setPrecio("85");
 
 
         $em =$this->getDoctrine()->getManager();
@@ -80,7 +80,18 @@ class PruebaController extends Controller
         $cursos_repositorio = $em->getRepository("AppBundle:Curso");
         $cursos=$cursos_repositorio->findAll();
 
-        foreach ($cursos as $curso) {
+       // Con la funcion findBy podemos hacer un where con arrays DEVUELVE ARRRAY
+       // $cursos=$cursos_repositorio->findBy(array('precio'=>83));
+
+
+       // Con la funcion findOneBy podemos hacer un where pero nos devuelve UN SOLO VALOR
+       // $cursos=$cursos_repositorio->findOneBy(array('precio'=>85));
+
+       
+
+
+
+       foreach ($cursos as $curso) {
 
             echo $curso->getTitulo()."<br>";
             echo $curso->getDescripcion()."<br>";
@@ -135,6 +146,81 @@ class PruebaController extends Controller
         }
 
         die();
+
+
+    }
+
+
+    public function sqlnativoAction(){
+
+     $em= $this->getDoctrine()->getManager();
+
+     $db = $em->getConnection();
+
+     $query="SELECT * FROM cursos";
+
+     $stmt = $db->prepare($query);
+
+     $params = array();
+
+     $stmt->execute($params);
+
+     $cursos= $stmt->fetchAll();
+
+     foreach ($cursos as $curso) {
+        echo $curso["titulo"]."<br/>";
+        echo $curso["descripcion"]."<br/>";
+        echo $curso["precio"]."<br/>";
+     }
+     die();
+    }
+
+
+    public function dqlAction(){
+
+     $em= $this->getDoctrine()->getManager();
+
+     $query=$em->createQuery("SELECT c FROM AppBundle:Curso c WHERE c.precio >= :precio")->setParameter("precio","83");
+
+     $cursos=$query->getResult();
+
+     foreach ($cursos as $curso) {
+
+        echo $curso->getTitulo()."<br/>";
+         echo $curso->getDescripcion()."<br/>";
+          echo $curso->getPrecio()."<br/>";
+       
+       
+     }
+
+     die();
+
+    }
+
+
+    public function querybuilderAction(){
+
+    $em= $this->getDoctrine()->getManager();
+
+    $cursos_repositorio=$em->getRepository("AppBundle:Curso");
+
+    $query=$cursos_repositorio->createQueryBuilder("c")->where("c.precio >= :precio")->setParameter("precio","83")->getQuery();
+
+
+    $cursos=$query->getResult();
+
+
+
+        foreach ($cursos as $curso) {
+
+        echo $curso->getTitulo()."<br/>";
+         echo $curso->getDescripcion()."<br/>";
+          echo $curso->getPrecio()."<br/>";
+       
+       
+       }
+
+     die();
 
 
     }

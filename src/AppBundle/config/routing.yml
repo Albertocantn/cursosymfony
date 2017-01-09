@@ -33,5 +33,17 @@ update:
     defaults: {_controller: AppBundle:Prueba:update }
 
 delete:
-    path: /deletecurso
+    path: /deletecurso/{id}
     defaults: {_controller: AppBundle:Prueba:delete }
+
+sqlnativo:
+    path: /sqlnativo
+    defaults: {_controller: AppBundle:Prueba:sqlnativo }
+
+dql:
+    path: /dql
+    defaults: {_controller: AppBundle:Prueba:dql }
+
+querybuilder:
+    path: /querybuilder
+    defaults: {_controller: AppBundle:Prueba:querybuilder }
