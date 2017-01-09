@@ -93,5 +93,50 @@ class PruebaController extends Controller
 
         
     }
+
+    public function updateAction($id,$titulo,$descripcion,$precio){
+        $em= $this->getDoctrine()->getManager();
+        $cursos_repositorio=$em->getRepository("AppBundle:Curso");
+
+        $curso = $cursos_repositorio->find($id);
+        $curso->setTitulo($titulo);
+        $curso->setDescripcion($descripcion);
+        $curso->setPrecio($precio);
+
+        $em->persist($curso);
+        $flush=$em->flush();
+
+        if ($flush != null) {
+            echo "el curso no se ha actualizado bien";
+        }
+        else{
+            echo "Curso actualizado correctamente";
+        }
+
+        die();
+
+
+    }
+
+      public function deleteAction($id){
+        $em= $this->getDoctrine()->getManager();
+        $cursos_repositorio=$em->getRepository("AppBundle:Curso");
+
+        $curso = $cursos_repositorio->find($id);
+
+        $em->remove($curso);
+        $flush=$em->flush();
+
+        if ($flush != null) {
+            echo "el curso no se ha eliminado bien";
+        }
+        else{
+            echo "Curso eliminado correctamente";
+        }
+
+        die();
+
+
+    }
 }
 

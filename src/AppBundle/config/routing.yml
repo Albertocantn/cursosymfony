@@ -27,3 +27,11 @@ create:
 read:
     path: /getcurso
     defaults: {_controller: AppBundle:Prueba:read }
+
+update:
+    path: /updatecurso/{id}/{titulo}/{descripcion}/{precio}
+    defaults: {_controller: AppBundle:Prueba:update }
+
+delete:
+    path: /deletecurso
+    defaults: {_controller: AppBundle:Prueba:delete }
