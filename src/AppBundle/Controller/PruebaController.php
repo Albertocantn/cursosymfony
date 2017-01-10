@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Curso;
 use AppBundle\Form\CursoType;
-
+use Symfony\Component\Validator\Constraints as Assert;
 class PruebaController extends Controller
 {
     
@@ -275,6 +275,27 @@ public function formulariocursoAction(Request $request){
 
     return $this->render('AppBundle:Prueba:form.html.twig', array('form' => $form->createView(),"status"=>$status,"data"=>$data));
 
+
+}
+
+
+public function validarEmailAction($email){
+
+    $emailConstraint = new Assert\Email();
+
+    $emailConstraint->message=" Pasame un correo correcto";
+
+
+    $error=$this->get("validator")->validate($email,$emailConstraint);
+
+    if(count($error)==0){
+        echo "correo válido";
+    }
+
+    else{
+        echo $error[0]->getMessage();
+    }
+    die();
 
 }
 

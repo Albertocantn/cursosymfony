@@ -21,6 +21,13 @@ class CursoType extends AbstractType
         ->add('precio', TextType::class)
         ->add('Guardar', SubmitType::class);
     }
+       // ->add('categoria',\Symfony\Component\Form\Extension\Core\Type\ChoiceType::class,array('choices' => array("html"=>"Html","php"=>"Php")))
+      // no se puede añadir un campo que no exista en la entidad COMBOBOX
+
+    //->add('Pais',\Symfony\Component\Form\Extension\Core\Type\CheckboxType::class,array('label' => 'Seleccione un pais',"required => true"))
+
+
+
     
     /**
      * {@inheritdoc}

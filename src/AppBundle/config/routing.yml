@@ -55,3 +55,7 @@ queryrepositorio:
 formulariocurso:
     path: /formulariocurso
     defaults: {_controller: AppBundle:Prueba:formulariocurso }
+
+validacionemail:
+    path: /validaemail/{email}
+    defaults: {_controller: AppBundle:Prueba:validarEmail }    
