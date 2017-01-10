@@ -258,7 +258,7 @@ public function formulariocursoAction(Request $request){
 
     if($form->isValid()){
 
-        $status=" Formulario válido";
+        $status="Formulario válido";
         $data=array(
             "titulo"=> $form->get("titulo")->getData(),
             "descripcion"=> $form->get("descripcion")->getData(),
